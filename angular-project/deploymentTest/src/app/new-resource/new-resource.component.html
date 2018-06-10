@@ -1,0 +1,100 @@
+<button routerLink="">Go to index</button>
+<button routerLink="../tutoring-session">Go to tutoring session</button>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col col-lg-9 col-md-12">
+      <h3 class="text-left">New Resource</h3>
+
+      <div ng-controller="formController as fc">
+
+        <form (ngSubmit)="processForm(editorForm.value)" [formGroup]="editorForm" id="editorForm">
+          <div class="form-group">
+            <label class="center-block" for="resourceTitle">Title:</label>
+            <input class="form-control" id="resourceTitle" placeholder="Enter title" formControlName="resource_title">
+            <div *ngIf="editorForm.controls.resource_title.invalid">
+              <div *ngIf="(editorForm.controls.resource_title.dirty || editorForm.controls.resource_title.touched)">
+                <div *ngIf="editorForm.controls.resource_title.errors.required">
+                  Title is required.
+                </div>
+                <div *ngIf="editorForm.controls.resource_title.errors?.minlength">
+                  The minimum length is 2 letters.
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="center-block" for="resourceSubTitle">Subtitle:</label>
+            <input class="form-control" id="resourceSubTitle" placeholder="Enter subtitle" formControlName="resource_subTitle">
+            <div class="invalid_feedback" *ngIf="editorForm.controls.resource_subTitle.invalid">
+              <div *ngIf="(editorForm.controls.resource_subTitle.dirty || editorForm.controls.resource_subTitle.touched)">
+                Subtitle is required.
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="center-block" for="resourceDes">Description:</label>
+            <textarea class="form-control" id="resourceDes" rows="3" placeholder="Enter description" formControlName="resource_des"></textarea>
+            <div class="invalid_feedback" *ngIf="editorForm.controls.resource_des.invalid">
+              <div *ngIf="(editorForm.controls.resource_des.dirty || editorForm.controls.resource_des.touched)">
+                Description is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="center-block" for="resource_image">Image:</label>
+            <br>
+            <input type="file" id="resource_image" #resource_image formControlName="resource_image">
+            <div class="invalid_feedback" *ngIf="editorForm.controls.resource_image.invalid">
+              <div *ngIf="editorForm.controls.resource_image.errors.required && (editorForm.controls.resource_image.dirty || editorForm.controls.resource_image.touched)">
+                Image is required.
+              </div>
+              <div *ngIf="editorForm.controls.resource_image.errors.sizeError">
+                Your file should be smaller than 1MB.
+              </div>
+              <div *ngIf="editorForm.controls.resource_image.errors.extError">
+                File extensions must be jpg, jpeg, bmp, png.
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="form-group">
+            <textarea name="editor1" id="editor1" rows="8" cols="80">{{data}}</textarea>
+          </div>
+
+          <div class="row">
+            <div class="button">
+              <button type="submit" class="btn btn-primary" (click)="saveClick()">Save</button>
+            </div>
+            <div class="button">
+              <button type="submit" class="btn btn-danger" (click)="publishClick()">Publish</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+    <div class="col col-lg-3 d-none d-lg-block">
+
+<div class="card">
+  <div class="card-header">
+    <h4>Create a new resource</h4>
+  </div>
+  <div class="card-block">
+    <h6 class="card-title">Resource</h6>
+    <p class="card-text"></p>
+
+  </div>
+</div>
+    </div>
+  </div>
+</div>

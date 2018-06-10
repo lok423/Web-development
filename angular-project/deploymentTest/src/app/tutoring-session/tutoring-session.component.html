@@ -1,0 +1,62 @@
+<!--<a routerLink="../index" routerLinkActive="active">Home</a>-->
+<button routerLink="">Go to index</button>
+
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-8 col-lg-8">
+      <div class="card">
+        <div class="card-header">
+
+          <div class="row">
+            <div class="col-md-6 float">
+
+              <p class="s4">{{_session.state}} Session
+                <br>
+                {{_session.expectDuration}}hr {{_session.subject}} with {{_session.studentName}}
+                <br>
+
+              <span ng-controller="datCtrl">
+                {{_session.date | date :'ha, EEEE, d MMMM y' }}
+              </span>
+            </p>
+
+            </div>
+          </div>
+
+
+        </div>
+
+
+        <div class="card-body">
+
+
+          <p class="s4 card-text">{{_session.location}}</p>
+          <hr>
+          <h5 class="s2 card-title">Detials: <button type="button" class="btn-sm float-right">Edit</button></h5>
+
+          <p class="s4 card-text">Details of Session...{{_session.sessionDetail}}</p>
+          <hr>
+          <h5 class="s2 card-title">Student Requirements:</h5>
+
+          <p class="s4 card-text">Student Requirements...{{_session.studentRequirement}}</p>
+          <hr>
+          <h5 class="s2 card-title">Teaching Method:</h5>
+
+          <p class="s4 card-text">...{{_session.teachingMethod}}</p>
+          <hr>
+          <div *ngIf="isValidForm()">
+            <h5 class="s2 card-title">Report: <button type="button" class="btn-sm float-right">Edit</button></h5>
+
+            <p class="s4 card-text">{{_session.report}}</p>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
